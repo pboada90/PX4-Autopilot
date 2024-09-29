@@ -1,4 +1,4 @@
-# Mezclador para el AUV Torpedo-Shaped
+# AUV Torpedo-Shaped mixer
 
 # Thruster 0 (Horizontal Thruster - Surge Direction 1)
 R: 2x 10000 10000 0 -10000 10000
@@ -20,7 +20,7 @@ Z: 2 HEAVE
 R: 2x 10000 10000 0 -10000 10000
 Z: 3 YAW
 
-# Superficies de Control (mezcladas para controlar pitch y roll)
+# Superficies de Control (mixed to control pitch and roll angles)
 # Aileron/Elevon Left (Control surface on the left)
 M: 2
 O: 10000 10000 0 -10000 10000

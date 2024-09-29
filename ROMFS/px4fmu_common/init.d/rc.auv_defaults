@@ -10,16 +10,16 @@ set VEHICLE_TYPE auv
 # MAV_TYPE_SUBMARINE 12
 param set-default MAV_TYPE 12
 
-# AUVs tampoco tienen un sensor de velocidad de aire, así que deshabilitar comprobaciones relacionadas
+# AUVs don't have an airspeed sensor, so disable checks around it
 param set-default CBRK_AIRSPD_CHK 162128
 
-# AUVs pueden necesitar ajustes adicionales específicos de sus características
-param set-default NAV_ACC_RAD 2.0     # Precisión de navegación
-param set-default MPC_HOLD_MAX_Z 0.6  # Máxima velocidad de ascenso/descenso en modo hold
-param set-default MPC_HOLD_MAX_XY 0.8 # Máxima velocidad horizontal en modo hold
-param set-default MPC_VEL_MANUAL 1.0  # Máxima velocidad de traslación en modo manual
-param set-default BAT_N_CELLS 3       # Configuración de las celdas de la batería (modificar según la batería real)
+# AUVs addtional adjustments
+param set-default NAV_ACC_RAD 2.0
+param set-default MPC_HOLD_MAX_Z 0.6
+param set-default MPC_HOLD_MAX_XY 0.8
+param set-default MPC_VEL_MANUAL 1.0
+param set-default BAT_N_CELLS 4
 
-# Configuraciones adicionales de seguridad, comunicaciones y navegación
-param set-default COM_DISARM_LAND 3   # Desarmar automáticamente al aterrizar
-param set-default MIS_TAKEOFF_ALT 2.0 # Altura inicial de despegue (aunque no aplica para un AUV, podría ser usada para iniciar la misión)
+# Security and navigation additional configurations
+param set-default COM_DISARM_LAND 3
+param set-default MIS_TAKEOFF_ALT 2.0
