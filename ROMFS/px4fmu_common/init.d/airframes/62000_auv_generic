@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# @name Torpedo-Shaped AUV
+#
+# @type AUV
+# @class Underwater Robot
+#
+# @maintainer Pedro Boada <pedro.boada@pucp.pe>
+#
+# @board px4_fmu-v2 exclude
+# @board bitcraze_crazyflie exclude
+#
+
+. ${R}etc/init.d/rc.auv_defaults
+
+# Configuración del Control Allocator (CA) para el AUV
+param set-default CA_AIRFRAME 8       # ID único para tu AUV
+param set-default CA_ROTOR_COUNT 5    # Número total de propulsores (2 horizontales, 2 verticales, 1 de guiñada)
+
+# Configuración del propulsor 0 (Horizontal 1 - Surge Direction)
+param set-default CA_ROTOR0_AX 1
+param set-default CA_ROTOR0_AY 0
+param set-default CA_ROTOR0_AZ 0
+param set-default CA_ROTOR0_KM 0
+param set-default CA_ROTOR0_PX 0.5    # Posición en el eje X (frontal)
+param set-default CA_ROTOR0_PY 0.2    # Posición en el eje Y (lateral)
+param set-default CA_ROTOR0_PZ 0      # Posición en el eje Z
+
+# Configuración del propulsor 1 (Horizontal 2 - Surge Direction)
+param set-default CA_ROTOR1_AX 1
+param set-default CA_ROTOR1_AY 0
+param set-default CA_ROTOR1_AZ 0
+param set-default CA_ROTOR1_KM 0
+param set-default CA_ROTOR1_PX 0.5    # Posición en el eje X (frontal)
+param set-default CA_ROTOR1_PY -0.2   # Posición en el eje Y (lateral opuesto)
+param set-default CA_ROTOR1_PZ 0      # Posición en el eje Z
+
+# Configuración del propulsor 2 (Vertical 1 - Heave Direction)
+param set-default CA_ROTOR2_AX 0
+param set-default CA_ROTOR2_AY 0
+param set-default CA_ROTOR2_AZ 1
+param set-default CA_ROTOR2_KM 0
+param set-default CA_ROTOR2_PX 0.3    # Posición en el eje X
+param set-default CA_ROTOR2_PY 0.2    # Posición en el eje Y
+param set-default CA_ROTOR2_PZ 0.2    # Posición en el eje Z (superior)
+
+# Configuración del propulsor 3 (Vertical 2 - Heave Direction)
+param set-default CA_ROTOR3_AX 0
+param set-default CA_ROTOR3_AY 0
+param set-default CA_ROTOR3_AZ 1
+param set-default CA_ROTOR3_KM 0
+param set-default CA_ROTOR3_PX 0.3    # Posición en el eje X
+param set-default CA_ROTOR3_PY -0.2   # Posición en el eje Y (lateral opuesto)
+param set-default CA_ROTOR3_PZ 0.2    # Posición en el eje Z (superior)
+
+# Configuración del propulsor 4 (Yaw Thruster)
+param set-default CA_ROTOR4_AX 0
+param set-default CA_ROTOR4_AY 0
+param set-default CA_ROTOR4_AZ 0
+param set-default CA_ROTOR4_KM 1      # Momento de giro para cambiar la dirección de guiñada
+param set-default CA_ROTOR4_PX 0.6    # Posición en el eje X (cerca del frontal)
+param set-default CA_ROTOR4_PY 0      # Posición en el eje Y (centrado)
+param set-default CA_ROTOR4_PZ 0.1    # Posición en el eje Z
+
+# Configuración de las superficies de control traseras
+# Nota: Las superficies de control no suelen configurarse directamente en este archivo. En su lugar, se manejarán mediante los mixers y controladores de actitud.
+
+# Configurar otros parámetros específicos para el AUV
+param set-default NAV_DEPTH_HOLD 1  # Permitir el control de profundidad
+
+# Referencia al archivo de mezcla (Mixer)
+set MIXER auv_torpedo
+
+# Indica el modo de inicio
+echo "Torpedo-shaped AUV configuration loaded successfully"
