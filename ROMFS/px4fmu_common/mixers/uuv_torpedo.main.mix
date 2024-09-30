@@ -1,24 +1,29 @@
 # AUV Torpedo-Shaped mixer
 
 # Thruster 0 (Horizontal Thruster - Surge Direction 1)
-R: 2x 10000 10000 0 -10000 10000
-Z: 0 SURGE
+M: 1
+O: 10000 10000 0 -10000 10000
+S: 0 3 10000 10000 0 -10000 10000  # Surge input
 
 # Thruster 1 (Horizontal Thruster - Surge Direction 2)
-R: 2x 10000 10000 0 -10000 10000
-Z: 0 SURGE
+M: 1
+O: 10000 10000 0 -10000 10000
+S: 0 3 10000 10000 0 -10000 10000  # Surge input
 
 # Thruster 2 (Vertical Thruster - Heave Direction 1)
-R: 2x 10000 10000 0 -10000 10000
-Z: 2 HEAVE
+M: 1
+O: 10000 10000 0 -10000 10000
+S: 0 2 10000 10000 0 -10000 10000  # Heave input
 
 # Thruster 3 (Vertical Thruster - Heave Direction 2)
-R: 2x 10000 10000 0 -10000 10000
-Z: 2 HEAVE
+M: 1
+O: 10000 10000 0 -10000 10000
+S: 0 2 10000 10000 0 -10000 10000  # Heave input
 
 # Thruster 4 (Yaw Thruster)
-R: 2x 10000 10000 0 -10000 10000
-Z: 3 YAW
+M: 1
+O: 10000 10000 0 -10000 10000
+S: 0 0 10000 10000 0 -10000 10000  # Yaw input
 
 # Superficies de Control (mixed to control pitch and roll angles)
 # Aileron/Elevon Left (Control surface on the left)
@@ -31,4 +36,4 @@ S: 0 2 10000 10000 0 -10000 10000  # Pitch input
 M: 2
 O: 10000 10000 0 -10000 10000
 S: 0 1 -10000 -10000 0 -10000 10000  # Inverse Roll input
-S: 0 2 10000 10000 0 -10000 10000  # Pitch input
+S: 0 2 10000 10000 0 -10000 10000  # Pitch input

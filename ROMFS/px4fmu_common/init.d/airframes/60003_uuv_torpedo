@@ -1,0 +1,94 @@
+#!/bin/sh
+#
+# @name Torpedo UUV Configuration
+#
+# @type Torpedo-shaped UUV
+# @class Underwater Robot
+#
+# @output Motor1 motor 1, surge, aft port horizontal, propeller CW
+# @output Motor2 motor 2, surge, aft starboard horizontal, propeller CCW
+# @output Motor3 motor 3, heave, bow vertical, propeller CW
+# @output Motor4 motor 4, heave, aft vertical, propeller CCW
+# @output Motor5 motor 5, yaw control, bow lateral, propeller CW
+# @output Servo1 servo 1, elevon control (right)
+# @output Servo2 servo 2, elevon control (left)
+#
+# @maintainer Your Name <your.email@example.com>
+#
+# @board px4_fmu-v2 exclude
+# @board bitcraze_crazyflie exclude
+#
+
+. ${R}etc/init.d/rc.uuv_defaults
+
+# Companion computer is connected via USB permanently
+param set-default CBRK_IO_SAFETY 22027
+
+param set-default MAV_1_CONFIG 102
+
+param set-default BAT1_A_PER_V 37.8798
+param set-default BAT1_CAPACITY 18000
+param set-default BAT1_V_DIV 11.0
+param set-default BAT1_N_CELLS 4
+param set-default BAT_V_OFFS_CURR 0.33
+
+# Setting airframe to custom
+param set-default CA_AIRFRAME 9
+
+param set-default CA_ROTOR_COUNT 5
+param set-default CA_R_REV 255
+
+# Surge motors (aft horizontal thrusters)
+param set-default CA_ROTOR0_AX 1.0000
+param set-default CA_ROTOR0_AY -1.0000
+param set-default CA_ROTOR0_AZ 0.0000
+param set-default CA_ROTOR0_KM 0.0000
+param set-default CA_ROTOR0_PX -0.5000
+param set-default CA_ROTOR0_PY -0.3000
+param set-default CA_ROTOR0_PZ 0.0000
+
+param set-default CA_ROTOR1_AX 1.0000
+param set-default CA_ROTOR1_AY 1.0000
+param set-default CA_ROTOR1_AZ 0.0000
+param set-default CA_ROTOR1_KM 0.0000
+param set-default CA_ROTOR1_PX -0.5000
+param set-default CA_ROTOR1_PY 0.3000
+param set-default CA_ROTOR1_PZ 0.0000
+
+# Heave motors (vertical thrusters, one at the bow and one at the aft)
+param set-default CA_ROTOR2_AZ 1.0000
+param set-default CA_ROTOR2_KM 0.0000
+param set-default CA_ROTOR2_PX 0.5000
+param set-default CA_ROTOR2_PY 0.0000
+param set-default CA_ROTOR2_PZ 0.2000
+
+param set-default CA_ROTOR3_AZ -1.0000
+param set-default CA_ROTOR3_KM 0.0000
+param set-default CA_ROTOR3_PX -0.5000
+param set-default CA_ROTOR3_PY 0.0000
+param set-default CA_ROTOR3_PZ 0.2000
+
+# Yaw motor (thruster at the bow for yaw control)
+param set-default CA_ROTOR4_AX 0.0000
+param set-default CA_ROTOR4_AY 1.0000
+param set-default CA_ROTOR4_AZ 0.0000
+param set-default CA_ROTOR4_KM 0.0000
+param set-default CA_ROTOR4_PX 0.7500
+param set-default CA_ROTOR4_PY 0.0000
+param set-default CA_ROTOR4_PZ 0.0000
+
+# Control surfaces (elevons mixing roll and pitch)
+param set-default MIXER_GRP1_CTRL_0 5  # Elevon right
+param set-default MIXER_GRP1_CTRL_1 4  # Elevon left
+
+# PWM outputs
+param set-default PWM_MAIN_FUNC1 101  # Motor 1 (surge)
+param set-default PWM_MAIN_FUNC2 102  # Motor 2 (surge)
+param set-default PWM_MAIN_FUNC3 103  # Motor 3 (heave)
+param set-default PWM_MAIN_FUNC4 104  # Motor 4 (heave)
+param set-default PWM_MAIN_FUNC5 105  # Motor 5 (yaw)
+param set-default PWM_MAIN_FUNC6 201  # Servo 1 (elevon right)
+param set-default PWM_MAIN_FUNC7 202  # Servo 2 (elevon left)
+
+# Mixer reference
+set MIXER uuv_torpedo.main.mix

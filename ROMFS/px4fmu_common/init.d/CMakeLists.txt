@@ -53,8 +53,6 @@ px4_add_romfs_files(
 	rc.rover_defaults
 	rc.uuv_apps
 	rc.uuv_defaults
-	rc.auv_apps
-	rc.auv_defaults
 	rc.vehicle_setup
 	rc.vtol_apps
 	rc.vtol_defaults
